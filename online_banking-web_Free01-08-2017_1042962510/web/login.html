@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="style1.css">
-</head>
-<body>
-  <div class="wrapper">
-    <form action="#">
-      <h2>Login</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style1.css" />
+    <script type="module" src="/js/login.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="#" id="loginForm">
+        <h2>Login</h2>
         <div class="input-field">
-        <input type="text" required>
-        <label>Username</label>
-      </div>
-      <div class="input-field">
-        <input type="password" required>
-        <label>Password</label>
-      </div>
-      <div class="forget">
-        <label for="remember">
-          <input type="checkbox" id="remember">
-          <p>Remember me</p>
-        </label>
-        
-      </div>
-      <div class="">
-      <a href="ForgetPassword.html">Forgot password?</a>
-      </div>
-      
-      <button type="submit" onclick="window.location.href='dashboard.html';">Log In</button>
+          <input id="username" type="text" required />
+          <label>Username</label>
+        </div>
+        <div class="input-field">
+          <input id="password" type="password" required />
+          <label>Password</label>
+        </div>
+        <div class="forget">
+          <label for="remember">
+            <input type="checkbox" id="remember" />
+            <p>Remember me</p>
+          </label>
+        </div>
+        <div class="">
+          <a href="ForgetPassword.html">Forgot password?</a>
+        </div>
 
-      <div class="register">
-        <p>Don't have an account? <a href="Register.html">Register</a></p>
-      </div>
-    </form>
-  </div>
-</body>
+        <button type="submit">Log In</button>
+
+        <div class="register">
+          <p>Don't have an account? <a href="Register.html">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
