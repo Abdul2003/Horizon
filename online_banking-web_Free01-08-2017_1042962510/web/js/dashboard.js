@@ -74,3 +74,18 @@ onAuthStateChanged(auth, async (user) => {
 //     "Due to a suspicious activity going on on your account you have been suspended from going any further kindly send an email to our support team to resolve whatever issues you might be experiencing"
 //   );
 // });
+const cardBtn = document.querySelector("#flipCardBtn");
+const card = document.querySelector(".flip-card-inner");
+var bool = true;
+cardBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  console.log(bool);
+  if (bool == true) {
+    card.style.transform = "rotateY(180deg)";
+    bool = false;
+  } else {
+    card.style.transform = "none";
+    bool = true;
+  }
+});
