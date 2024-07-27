@@ -1,0 +1,268 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <!-- External Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <!-- Internal Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            padding: 20px;
+        }
+
+        .sb-topnav {
+            padding: 20px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+            color: #ffffff;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .breadcrumb-item {
+            font-size: 20px;
+        }
+
+        .breadcrumb-item.active {
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #212529;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 12px;
+        }
+
+        .last-transactions {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .last-transactions h2 {
+            margin-bottom: 20px;
+        }
+
+        .transaction-item {
+            margin-bottom: 10px;
+        }
+
+        .transaction-item span {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .transaction-item .text-muted {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="padding: 10px;">
+        <a class="navbar-brand ps-3" href="#">Horizon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" style="border-radius: 20px;" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" id="logout" href="index.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4"></h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active"><b id="user-name">Hi, NUELORG</b></li>
+                </ol>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Available Balance</div>
+                            <div id="balance" class="card-body" style="font-size: 24px;">$600,000,000</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <button id="transferBtn" class="btn btn-primary">Transfer</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>Chart Area
+                            </div>
+                            <div class="card-body">
+                                <!-- Chart content here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Transactions Section -->
+                <div class="last-transactions">
+                    <h2>Last Transactions</h2>
+                    <div class="transaction-item">
+                        <span>$10,00</span>
+                        <span class="text-muted">to John Doe</span>
+                        <span class="text-muted">- 2 hours ago</span>
+                        <span class="text-muted">27/08/2024</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span>$50,000</span>
+                        <span class="text-muted">to Jane Smith</span>
+                        <span class="text-muted">- 4 hours ago</span>
+                        <span class="text-muted">27/08/2024</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span>$2,900</span>
+                        <span class="text-muted">to Emily Johnson</span>
+                        <span class="text-muted">- 1 day ago</span>
+                        <span class="text-muted">26/08/2024</span>
+
+                    </div>
+                    <div class="transaction-item">
+                        <span>$38,650</span>
+                        <span class="text-muted">to Blings </span>
+                        <span class="text-muted">- 4 day ago</span>
+                        <span class="text-muted">23/08/2024</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span>$20,000</span>
+                        <span class="text-muted">to James</span>
+                        <span class="text-muted">- 7 day ago</span>
+                        <span class="text-muted">20/08/2024</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span>$106,800</span>
+                        <span class="text-muted">to Ola phyz</span>
+                        <span class="text-muted">- 2 weeks ago</span>
+                        <span class="text-muted">04/08/2024</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container-fluid px-4">
+                <a href="mailto:republicbank405@gmail.com">
+                    <button class="btn btn-dark">Message The Support Team</button>
+                </a>
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Republic Central Bank</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <!-- Your Custom Scripts -->
+    <script src="js/scripts.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <!-- Simple DataTables -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <!-- TradingView Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+        async>
+        {
+            "symbol": "FX:EURUSD",
+            "width": "100%",
+            "height": "100%",
+            "locale": "en",
+            "dateRange": "12M",
+            "colorTheme": "light",
+            "isTransparent": false,
+            "autosize": true,
+            "largeChartUrl": ""
+        }
+    </
