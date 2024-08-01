@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="style1.css" />
+    <script type="module" src="/js/signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="#" id="signupForm">
+        <h2>Login</h2>
+        <div class="input-field">
+          <input id="first_name" type="text" required />
+          <label>First Name</label>
+        </div>
+        <div class="input-field">
+          <input id="last_name" type="text" required />
+          <label>Last Name</label>
+        </div>
+        <div class="input-field">
+          <input id="email" type="text" required />
+          <label>Email</label>
+        </div>
+        <div class="input-field">
+          <input id="password" type="password" required />
+          <label>Password</label>
+        </div>
+
+        <span class="input-validation"
+          >Password should have more than 6 characters.</span
+        >
+
+        <button type="submit">Register</button>
+
+        <div class="register">
+          <p>Have an account? <a href="/login.html">Login</a></p>
+        </div>
+      </form>
+    </div>
+    <script>
+      window.embeddedChatbotConfig = {
+        chatbotId: "RFRWWG3T9M9Uph7c0syW5",
+        domain: "www.chatbase.co",
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="RFRWWG3T9M9Uph7c0syW5"
+      domain="www.chatbase.co"
+      defer
+    ></script>
+  </body>
+</html>

@@ -7,6 +7,18 @@
     <title>Login</title>
     <link rel="stylesheet" href="style1.css" />
     <script type="module" src="/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "PT77u5Wd7ysahRMsX",
+        });
+      })();
+    </script>
   </head>
   <body>
     <div class="wrapper">
@@ -27,15 +39,27 @@
           </label>
         </div>
         <div class="">
-          <a href="ForgetPassword.html">Forgot password?</a>
+          <a href="/ForgetPassword.html">Forgot password?</a>
         </div>
 
         <button type="submit">Log In</button>
 
         <div class="register">
-          <p>Don't have an account? <a href="Register.html">Register</a></p>
+          <p>Don't have an account? <a href="./signup.html">Register</a></p>
         </div>
       </form>
     </div>
+    <script>
+      window.embeddedChatbotConfig = {
+        chatbotId: "RFRWWG3T9M9Uph7c0syW5",
+        domain: "www.chatbase.co",
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="RFRWWG3T9M9Uph7c0syW5"
+      domain="www.chatbase.co"
+      defer
+    ></script>
   </body>
 </html>
