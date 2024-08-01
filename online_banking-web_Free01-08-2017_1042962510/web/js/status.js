@@ -98,6 +98,7 @@ if (docSnap.exists()) {
         showConfirmButton: false,
         timer: 1500,
       });
+      status.innerHTML = `<ul>Beneficiary: ${item.account}</ul><ul>Bank: ${item.bank}</ul><ul>Amount: ${item.amount}</ul><ul>Status: Successful</ul>`;
     });
     button2.addEventListener("click", (e) => {
       e.preventDefault();
@@ -109,6 +110,7 @@ if (docSnap.exists()) {
         showConfirmButton: false,
         timer: 1500,
       });
+      status.innerHTML = `<ul>Beneficiary: ${item.account}</ul><ul>Bank: ${item.bank}</ul><ul>Amount: ${item.amount}</ul><ul>Status: Pending</ul>`;
     });
     button3.addEventListener("click", (e) => {
       e.preventDefault();
@@ -120,6 +122,7 @@ if (docSnap.exists()) {
         showConfirmButton: false,
         timer: 1500,
       });
+      status.innerHTML = `<ul>Beneficiary: ${item.account}</ul><ul>Bank: ${item.bank}</ul><ul>Amount: ${item.amount}</ul><ul>Status: Failed</ul>`;
     });
   });
 } else {
