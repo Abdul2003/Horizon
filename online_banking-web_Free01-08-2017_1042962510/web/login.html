@@ -7,6 +7,18 @@
     <title>Login</title>
     <link rel="stylesheet" href="style1.css" />
     <script type="module" src="/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "PT77u5Wd7ysahRMsX",
+        });
+      })();
+    </script>
   </head>
   <body>
     <div class="wrapper">
@@ -33,7 +45,7 @@
         <button type="submit">Log In</button>
 
         <div class="register">
-          <p>Don't have an account? <a href="Register.html">Register</a></p>
+          <p>Don't have an account? <a href="signup.html">Register</a></p>
         </div>
       </form>
     </div>
