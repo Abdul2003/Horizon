@@ -91,14 +91,35 @@ if (docSnap.exists()) {
     button1.addEventListener("click", (e) => {
       e.preventDefault();
       changeStatus("Successful");
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Transaction Set To Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
     button2.addEventListener("click", (e) => {
       e.preventDefault();
       changeStatus("Pending");
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "Transaction Set To Pending",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
     button3.addEventListener("click", (e) => {
       e.preventDefault();
       changeStatus("Failed");
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "Transaction Set To Failed",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   });
 } else {
