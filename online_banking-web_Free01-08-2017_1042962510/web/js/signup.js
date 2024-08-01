@@ -9,7 +9,6 @@ import {
   setDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>;
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCS2jbtRL66n6chj7HaoO93Hc1lMiwj8XE",
@@ -30,7 +29,8 @@ const db = getFirestore(app);
 //User Signup
 const signupForm = document.querySelector("#signupForm");
 console.log(auth);
-signupForm.addEventListener("submit", () => {
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   //get user info
   const email = signupForm["email"].value;
   const password = signupForm["password"].value;
@@ -43,6 +43,7 @@ signupForm.addEventListener("submit", () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((credential) => {
         console.log(credential);
+        setDoc(doc(db, "Transactions", email), {});
         setDoc(doc(db, "Users", email), {
           firstName: firstName,
           lastName: lastName,
