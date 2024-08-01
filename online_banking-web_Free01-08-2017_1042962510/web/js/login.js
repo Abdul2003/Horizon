@@ -22,6 +22,8 @@ const firebaseConfig = {
   measurementId: "G-1BMQ9354ED",
 };
 
+//send mail
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -35,13 +37,35 @@ loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = loginForm["username"].value;
   const password = loginForm["password"].value;
-
+  const loginCode = Math.floor(1000 + Math.random() * 9000);
+  const loginCodeString = loginCode.toString();
+  function sendMail() {
+    let params = {
+      message: "Your Login Code Is " + loginCodeString,
+      email: email,
+    };
+    emailjs.send("service_l07oyev", "template_je17ip4", params);
+  }
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
-      window.location.href = "/dashboard.html";
+      sendMail();
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setTimeout(function () {
+        window.location = "/otp.html";
+      }, 1500);
       loginForm.reset();
     })
     .catch((error) => {
-      alert(error.message);
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+      });
     });
 });

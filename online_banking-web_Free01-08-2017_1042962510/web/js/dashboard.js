@@ -38,10 +38,27 @@ const expiryDate = document.querySelector("#expiry");
 const balance = document.querySelector("#balance");
 const username = document.querySelector("#user-name");
 const fullName = document.querySelector("#full-name");
+const cardBtn = document.querySelector("#flipCardBtn");
+const card = document.querySelector(".flip-card-inner");
+
+//flip card
+var bool = true;
+cardBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  console.log(bool);
+  if (bool == true) {
+    card.style.transform = "rotateY(180deg)";
+    bool = false;
+  } else {
+    card.style.transform = "none";
+    bool = true;
+  }
+});
 
 //GET USER INFO
 onAuthStateChanged(auth, async (user) => {
-  const docRef = doc(db, "users", user.email);
+  const docRef = doc(db, "Users", user.email);
   const docSnap = await getDoc(docRef);
   console.log(user.email);
 
@@ -49,9 +66,16 @@ onAuthStateChanged(auth, async (user) => {
     console.log("Document data:", docSnap.data());
     cardNumber.innerHTML = docSnap.data().number;
     cvv.innerHTML = docSnap.data().cvv;
-    expiryDate.innerHTML = docSnap.data().expiry;
-    username.innerHTML = `Hi, ` + docSnap.data().name;
-    fullName.innerHTML = docSnap.data().name;
+    expiryDate.innerHTML = `${docSnap.data().expiryMonth}/${
+      docSnap.data().expiryYear
+    }`;
+    username.innerHTML =
+      `Hi, ` + docSnap.data().firstName + " " + docSnap.data().lastName;
+    fullName.innerHTML =
+      docSnap.data().firstName + " " + docSnap.data().lastName;
+    if (docSnap.data().number == undefined) {
+      cardBtn.style.display = "none";
+    }
   } else {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
@@ -74,18 +98,3 @@ onAuthStateChanged(auth, async (user) => {
 //     "Due to a suspicious activity going on on your account you have been suspended from going any further kindly send an email to our support team to resolve whatever issues you might be experiencing"
 //   );
 // });
-const cardBtn = document.querySelector("#flipCardBtn");
-const card = document.querySelector(".flip-card-inner");
-var bool = true;
-cardBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  console.log(bool);
-  if (bool == true) {
-    card.style.transform = "rotateY(180deg)";
-    bool = false;
-  } else {
-    card.style.transform = "none";
-    bool = true;
-  }
-});
