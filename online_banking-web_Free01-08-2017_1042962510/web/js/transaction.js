@@ -26,8 +26,11 @@ const app = initializeApp(firebaseConfig);
 
 const transactionForm = document.getElementById("transactionFormBox");
 const auth = getAuth();
+
 onAuthStateChanged(auth, async (user) => {
-  console.log(user.email);
+  const db = getFirestore(app);
+  const docRef = doc(db, "Transactions", user.email);
+  const docSnap = await getDoc(docRef);
   transactionForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (
@@ -37,13 +40,12 @@ onAuthStateChanged(auth, async (user) => {
     ) {
       alert(`Empty Fields Not Allowed`);
     } else {
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
       var getDate = new Date();
       const account = transactionForm["beneficiaryAccount"].value;
       const bank = transactionForm["beneficiaryBank"].value;
       const amount = transactionForm["amount"].value;
-      await updateDoc(doc(db, "Transactions", user.email), {
+      // if (docSnap.exists()) {
+      updateDoc(docRef, {
         Transaction: arrayUnion({
           date: getDate.toString(),
           account: account,
@@ -52,6 +54,20 @@ onAuthStateChanged(auth, async (user) => {
           status: "Pending",
         }),
       });
+      // }
+      //  else {
+      //   setDoc(docRef, {
+      //     Transaction: arrayUnion({
+      //       date: getDate.toString(),
+      //       account: account,
+      //       bank: bank,
+      //       amount: amount,
+      //       status: "Pending",
+      //     }),
+      //   });
+      //   docSnap.exists();
+      // }
+
       Swal.fire({
         title: "Successful",
         text: "Transfer Sent",
