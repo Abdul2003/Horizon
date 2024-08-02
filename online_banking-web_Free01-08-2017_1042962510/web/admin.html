@@ -15,7 +15,7 @@
       href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
       rel="stylesheet"
     />
-    <link href="css/styles.css" rel="stylesheet" />
+
     <!-- Font Awesome -->
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -43,7 +43,8 @@
         width: 100%;
       }
       #generateCard,
-      #transactionStatus {
+      #transactionStatus,
+      #getUserDetails {
         padding: 90px;
         height: 40px;
         display: flex;
@@ -158,12 +159,17 @@
           />
         </div>
         <div class="row m-5">
-          <div class="col-6">
+          <div class="col-4">
             <button type="button" id="generateCard" class="btn btn-primary">
               Generate ATM
             </button>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <button type="button" id="getUserDetails" class="btn btn-primary">
+              Get User Details
+            </button>
+          </div>
+          <div class="col-4">
             <button
               type="button"
               id="transactionStatus"
@@ -173,8 +179,26 @@
             </button>
           </div>
         </div>
+        <div class="row m-5">
+          <div class="col-12">
+            <div class="card w-50">
+              <div class="card-body w-100">
+                <p>Name</p>
+                <p id="name">MUSA</p>
+                <hr class="solid" />
+                <p>IBAN</p>
+                <p id="iban">200</p>
+                <hr class="solid" />
+                <p>SSN</p>
+                <p id="ssn">300</p>
+                <hr class="solid" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
     <script>
       window.embeddedChatbotConfig = {
         chatbotId: "RFRWWG3T9M9Uph7c0syW5",

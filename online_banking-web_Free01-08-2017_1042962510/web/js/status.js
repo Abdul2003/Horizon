@@ -19,8 +19,6 @@ const firebaseConfig = {
   measurementId: "G-1BMQ9354ED",
 };
 const app = initializeApp(firebaseConfig);
-//TRY LOGGING THIS FIRST TO MAKE SURE JS FILE IS LOADED BY HTML
-console.log("fsf");
 //auth and firestore references
 const db = getFirestore(app);
 const params = new URLSearchParams(location.search);
@@ -53,7 +51,7 @@ if (docSnap.exists()) {
     button3.textContent = "Failed";
     button3.setAttribute("class", "btn btn-danger m-1");
     buttonContainer.classList.add("button-container");
-    status.innerHTML = `<ul>Beneficiary: ${item.account}</ul><ul>Bank: ${item.bank}</ul><ul>Amount: ${item.amount}</ul><ul>Status: ${item.status}</ul>`;
+    status.innerHTML = `<ul>Beneficiary: ${item.account}</ul><ul>Name: ${item.name}</ul><ul>Bank: ${item.bank}</ul><ul>Amount: $${item.amount}</ul><ul>Status: ${item.status}</ul>`;
 
     buttonContainer.appendChild(button1);
     buttonContainer.appendChild(button2);
@@ -69,6 +67,7 @@ if (docSnap.exists()) {
         Transaction: arrayRemove({
           date: item.date,
           account: item.account,
+          name: item.name,
           bank: item.bank,
           amount: item.amount,
           status: item.status,
@@ -78,6 +77,7 @@ if (docSnap.exists()) {
           Transaction: arrayUnion({
             date: item.date,
             account: item.account,
+            name: item.name,
             bank: item.bank,
             amount: item.amount,
             status: status,

@@ -12,7 +12,7 @@
   <body>
     <div class="wrapper">
       <form action="#" id="signupForm">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <div class="input-field">
           <input id="first_name" type="text" required />
           <label>First Name</label>
@@ -26,13 +26,22 @@
           <label>Email</label>
         </div>
         <div class="input-field">
+          <input id="ssn" type="text" required />
+          <label>IBAN</label>
+        </div>
+        <div class="input-field">
+          <input id="iban" type="text" required />
+          <label>SSN</label>
+        </div>
+        <div class="input-field">
           <input id="password" type="password" required />
           <label>Password</label>
         </div>
 
-        <span class="input-validation"
-          >Password should have more than 6 characters.</span
-        >
+        <div class="input-field">
+          <input id="confirmPassword" type="password" required />
+          <label>Confirm Password</label>
+        </div>
 
         <button type="submit">Register</button>
 
