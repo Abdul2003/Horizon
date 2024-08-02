@@ -27,7 +27,8 @@ body::before {
   background-size: cover;
 }
 
-.wrapper {
+.wrapper,
+.login-wrapper {
   width: 400px;
   border-radius: 8px;
   padding: 30px;
@@ -51,7 +52,7 @@ h2 {
 .input-field {
   position: relative;
   border-bottom: 2px solid #ccc;
-  margin: 15px 0;
+  margin: 13px;
 }
 
 .input-field label {
@@ -103,12 +104,14 @@ h2 {
   margin-left: 8px;
 }
 
-.wrapper a {
+.wrapper a,
+.login-wrapper a {
   color: #efefef;
   text-decoration: none;
 }
 
-.wrapper a:hover {
+.wrapper a:hover,
+.login-wrapper a:hover {
   text-decoration: underline;
 }
 
@@ -131,7 +134,8 @@ button:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.input-validation {
+.input-validation,
+.confirmPasswordValidation {
   color: red;
   font-size: 16px;
   text-align: start;

@@ -25,6 +25,7 @@ console.log("fsf");
 
 const generateCardBtn = document.getElementById("generateCard");
 const transactionPage = document.getElementById("transactionStatus");
+const getUser = document.getElementById("getUserDetails");
 
 generateCardBtn.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -94,5 +95,30 @@ transactionPage.addEventListener("click", async (e) => {
         timer: 1500,
       });
     }
+  }
+});
+
+getUser.addEventListener("click", async (e) => {
+  e.preventDefault();
+  var email = document.getElementById("username").value;
+  const db = getFirestore(app);
+  const userDocRef = doc(db, "Users", email);
+  const userDocSnap = await getDoc(userDocRef);
+  const name = document.getElementById("name");
+  const iban = document.getElementById("iban");
+  const ssn = document.getElementById("ssn");
+  if (userDocSnap.exists()) {
+    name.innerHTML =
+      userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
+    iban.innerHTML = userDocSnap.data().iban;
+    ssn.innerHTML = userDocSnap.data().ssn;
+  } else {
+    Swal.fire({
+      position: "top",
+      icon: "error",
+      title: "User Not Found",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 });

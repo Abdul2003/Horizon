@@ -34,11 +34,31 @@ signupForm.addEventListener("submit", (e) => {
   //get user info
   const email = signupForm["email"].value;
   const password = signupForm["password"].value;
+  const confirmPassword = signupForm["confirmPassword"].value;
   const firstName = signupForm["first_name"].value;
   const lastName = signupForm["last_name"].value;
+  const iban = signupForm["iban"].value;
+  const ssn = signupForm["ssn"].value;
   const inputValidation = document.querySelector(".input-validation");
+  const confirmPasswordValidation = document.querySelector(
+    ".confirmPasswordValidation"
+  );
   if (password.length < 6) {
-    inputValidation.style.display = "block";
+    Swal.fire({
+      position: "top",
+      icon: "error",
+      title: "Password Should Be More Than 6 Characters",
+      showConfirmButton: false,
+      timer: 1000,
+    });
+  } else if (password != confirmPassword) {
+    Swal.fire({
+      position: "top",
+      icon: "error",
+      title: "Password Doesnt Match",
+      showConfirmButton: false,
+      timer: 1000,
+    });
   } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((credential) => {
@@ -47,6 +67,8 @@ signupForm.addEventListener("submit", (e) => {
         setDoc(doc(db, "Users", email), {
           firstName: firstName,
           lastName: lastName,
+          iban: iban,
+          ssn: ssn,
         }).then(function () {
           Swal.fire({
             position: "top",

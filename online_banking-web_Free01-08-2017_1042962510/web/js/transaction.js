@@ -36,19 +36,22 @@ onAuthStateChanged(auth, async (user) => {
     if (
       transactionForm["beneficiaryAccount"].value == "" ||
       transactionForm["beneficiaryBank"].value == "" ||
-      transactionForm["amount"].value == ""
+      transactionForm["amount"].value == "" ||
+      transactionForm["beneficiaryName"].value == ""
     ) {
       alert(`Empty Fields Not Allowed`);
     } else {
       var getDate = new Date();
       const account = transactionForm["beneficiaryAccount"].value;
+      const name = transactionForm["beneficiaryName"].value;
       const bank = transactionForm["beneficiaryBank"].value;
       const amount = transactionForm["amount"].value;
       // if (docSnap.exists()) {
       updateDoc(docRef, {
         Transaction: arrayUnion({
-          date: getDate.toString(),
+          date: getDate.toLocaleString(),
           account: account,
+          name: name,
           bank: bank,
           amount: amount,
           status: "Pending",

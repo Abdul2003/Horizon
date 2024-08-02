@@ -58,27 +58,60 @@ cardBtn.addEventListener("click", (e) => {
 
 //GET USER INFO
 onAuthStateChanged(auth, async (user) => {
-  const docRef = doc(db, "Users", user.email);
-  const docSnap = await getDoc(docRef);
+  const userDocRef = doc(db, "Users", user.email);
+  const userDocSnap = await getDoc(userDocRef);
+  const transactionDocRef = doc(db, "Transactions", user.email);
+  const transactionDocSnap = await getDoc(transactionDocRef);
+
   console.log(user.email);
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-    cardNumber.innerHTML = docSnap.data().number;
-    cvv.innerHTML = docSnap.data().cvv;
-    expiryDate.innerHTML = `${docSnap.data().expiryMonth}/${
-      docSnap.data().expiryYear
+  if (userDocSnap.exists()) {
+    console.log("Document data:", userDocSnap.data());
+    cardNumber.innerHTML = userDocSnap.data().number;
+    cvv.innerHTML = userDocSnap.data().cvv;
+    expiryDate.innerHTML = `${userDocSnap.data().expiryMonth}/${
+      userDocSnap.data().expiryYear
     }`;
     username.innerHTML =
-      `Hi, ` + docSnap.data().firstName + " " + docSnap.data().lastName;
+      `Hi, ` + userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
     fullName.innerHTML =
-      docSnap.data().firstName + " " + docSnap.data().lastName;
-    if (docSnap.data().number == undefined) {
+      userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
+    if (userDocSnap.data().number == undefined) {
       cardBtn.style.display = "none";
     }
   } else {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
+  }
+  if (transactionDocSnap.exists()) {
+    transactionDocSnap.data().Transaction.map((item) => {
+      const parentDiv = document.querySelector(".last-transactions");
+      const transactionItem = document.createElement("div");
+      transactionItem.classList.add("transaction-item");
+      const amount = document.createElement("span");
+      amount.innerHTML = "$" + item.amount;
+      const beneficiary = document.createElement("span");
+      beneficiary.classList.add("text-muted");
+      beneficiary.innerHTML = "to " + item.name;
+      const date = document.createElement("span");
+      date.classList.add("text-muted");
+      date.innerHTML = item.date;
+      const status = document.createElement("span");
+      status.innerHTML = item.status;
+
+      if (item.status == "Pending") {
+        status.style.color = "rgb(230, 230, 16)";
+      } else if (item.status == "Failed") {
+        status.style.color = "rgb(217, 34, 17)";
+      } else if (item.status == "Successful") {
+        status.style.color = "rgb(17, 217, 37)";
+      }
+      transactionItem.appendChild(amount);
+      transactionItem.appendChild(beneficiary);
+      transactionItem.appendChild(date);
+      transactionItem.appendChild(status);
+      parentDiv.appendChild(transactionItem);
+    });
   }
 });
 
