@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Admin</title>
-    <!-- External Stylesheets -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
       rel="stylesheet"
@@ -35,13 +35,19 @@
     ></script>
     <style>
       .card {
-        align-items: center;
         justify-content: center;
         margin: auto;
       }
       .input-group {
         width: 100%;
       }
+      #userInput {
+        justify-content: center;
+        display: flex;
+        width: 60%;
+        margin: auto;
+      }
+
       #generateCard,
       #transactionStatus,
       #getUserDetails {
@@ -49,6 +55,7 @@
         height: 40px;
         display: flex;
         align-items: center;
+        width: 300px;
       }
       body {
         background-color: #f8f9fa;
@@ -146,53 +153,53 @@
         </ul>
       </div>
     </nav>
-    <div class="card">
-      <div class="card-body">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter User Email To Be Managed"
-            aria-label="Enter User Email To Be Managed"
-            aria-describedby="basic-addon2"
-            id="username"
-          />
+    <div class="container mt-5">
+      <div id="userInput" class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control w-50"
+          placeholder="Enter User Email To Be Managed"
+          aria-label="Enter User Email To Be Managed"
+          aria-describedby="basic-addon2"
+          id="username"
+        />
+      </div>
+      <div class="row m-5 justify-content-center">
+        <div
+          class="col-lg-4 col-md-6 col-sm-12 m-3 m-sm-3 m-md-0 m-lg-0 d-flex justify-content-center"
+        >
+          <button type="button" id="generateCard" class="btn btn-primary">
+            Generate ATM
+          </button>
         </div>
-        <div class="row m-5">
-          <div class="col-4">
-            <button type="button" id="generateCard" class="btn btn-primary">
-              Generate ATM
-            </button>
-          </div>
-          <div class="col-4">
-            <button type="button" id="getUserDetails" class="btn btn-primary">
-              Get User Details
-            </button>
-          </div>
-          <div class="col-4">
-            <button
-              type="button"
-              id="transactionStatus"
-              class="btn btn-primary"
-            >
-              Modify Transaction
-            </button>
-          </div>
+        <div
+          class="col-lg-4 col-md-6 col-sm-12 m-3 m-sm-3 m-md-0 m-lg-0 d-flex justify-content-center"
+        >
+          <button type="button" id="getUserDetails" class="btn btn-primary">
+            Get User Details
+          </button>
         </div>
-        <div class="row m-5">
-          <div class="col-12">
-            <div class="card w-50">
-              <div class="card-body w-100">
-                <p>Name</p>
-                <p id="name">MUSA</p>
-                <hr class="solid" />
-                <p>IBAN</p>
-                <p id="iban">200</p>
-                <hr class="solid" />
-                <p>SSN</p>
-                <p id="ssn">300</p>
-                <hr class="solid" />
-              </div>
+        <div
+          class="col-lg-4 col-md-6 col-sm-12 m-3 m-sm-3 m-md-0 m-lg-0 mt-md-2 d-flex justify-content-center"
+        >
+          <button type="button" id="transactionStatus" class="btn btn-primary">
+            Modify Transaction
+          </button>
+        </div>
+      </div>
+      <div class="row m-5">
+        <div class="col-12">
+          <div class="card w-50">
+            <div class="card-body w-100">
+              <p>Name</p>
+              <p id="name"></p>
+              <hr class="solid" />
+              <p>IBAN</p>
+              <p id="iban"></p>
+              <hr class="solid" />
+              <p>SSN</p>
+              <p id="ssn"></p>
+              <hr class="solid" />
             </div>
           </div>
         </div>
