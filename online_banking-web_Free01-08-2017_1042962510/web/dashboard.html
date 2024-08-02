@@ -21,6 +21,7 @@
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/js/dashboard.js"></script>
     <!-- Bootstrap Bundle -->
     <link
@@ -137,7 +138,7 @@
       /* CARD */
       .flip-card {
         background-color: transparent;
-        width: 450px;
+        max-width: 450px;
         height: 200px;
         margin-bottom: 20px;
         perspective: 1000px; /* Remove this if you don't want the 3D effect */
@@ -179,6 +180,22 @@
         background-color: purple;
         color: white;
         transform: rotateY(180deg);
+      }
+      .atmBtn {
+        background-color: #a42e9d; /* Green */
+        border: none;
+        color: white;
+        padding: 15px;
+        margin-left: 6px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition: 0.2s;
+      }
+      .atmBtn:hover {
+        transition: 0.2s;
+        background-color: #883782; /* Green */
       }
     </style>
   </head>
@@ -265,8 +282,23 @@
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
                     <div class="card-body">Available Balance</div>
-                    <div id="balance" class="card-body" style="font-size: 24px">
-                      $600,000,000
+                    <div class="row">
+                      <div class="col-12">
+                        <div
+                          id="balance"
+                          class="card-body"
+                          style="font-size: 24px"
+                        >
+                          $600,000,000
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <input
+                          type="button"
+                          class="atmBtn"
+                          value="Request ATM"
+                        />
+                      </div>
                     </div>
                   </div>
                   <div class="flip-card-back">

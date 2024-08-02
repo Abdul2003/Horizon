@@ -7,6 +7,7 @@ import {
   getFirestore,
   doc,
   getDoc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 // Initialize Firebase
 const firebaseConfig = {
@@ -57,6 +58,7 @@ cardBtn.addEventListener("click", (e) => {
 });
 
 //GET USER INFO
+const atmBtn = document.querySelector(".atmBtn");
 onAuthStateChanged(auth, async (user) => {
   const userDocRef = doc(db, "Users", user.email);
   const userDocSnap = await getDoc(userDocRef);
@@ -78,6 +80,9 @@ onAuthStateChanged(auth, async (user) => {
       userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
     if (userDocSnap.data().number == undefined) {
       cardBtn.style.display = "none";
+    }
+    if (userDocSnap.data().number != undefined) {
+      atmBtn.style.display = "none";
     }
   } else {
     // docSnap.data() will be undefined in this case
@@ -113,6 +118,49 @@ onAuthStateChanged(auth, async (user) => {
       parentDiv.appendChild(transactionItem);
     });
   }
+  atmBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const db = getFirestore(app);
+    const docRef = doc(db, "Users", user.email);
+    const docSnap = await getDoc(docRef);
+
+    const number = Math.floor(
+      1000000000000000 + Math.random() * 9000000000000000
+    );
+    const cvv = Math.floor(100 + Math.random() * 900);
+    var expMonth = Math.floor(Math.random() * (13 - 1) + 1);
+    const expYear = Math.floor(Math.random() * (2030 - 2025) + 2025);
+
+    const numberString = number.toString();
+    const cvvString = cvv.toString();
+    var expMonthString = expMonth.toString();
+    const expYearString = expYear.toString();
+
+    expMonth < 10 ? (expMonthString = `0${expMonth}`) : (expMonth = expMonth);
+    if (docSnap.exists()) {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "ATM Requested Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      updateDoc(docRef, {
+        number: numberString,
+        cvv: cvvString,
+        expiryMonth: expMonthString,
+        expiryYear: expYearString,
+      });
+    } else {
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "User Not Found",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  });
 });
 
 //Logout
