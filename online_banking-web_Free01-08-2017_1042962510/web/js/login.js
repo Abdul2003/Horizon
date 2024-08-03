@@ -39,20 +39,20 @@ loginForm.addEventListener("submit", (e) => {
   const password = loginForm["password"].value;
   const loginCode = Math.floor(1000 + Math.random() * 9000);
   const loginCodeString = loginCode.toString();
-  async function sendMail() {
+  function sendMail() {
     let params = {
       message: "Your Login Code Is " + loginCodeString,
       email: email,
     };
-    await emailjs
+    emailjs
       .send("service_izeeins", "template_ejsb7we", params)
       .then(console.log("successful"))
       .catch((error) => console.log(error.message));
     console.log("email function ran");
   }
   signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      sendMail();
+    .then(async () => {
+      await sendMail();
       Swal.fire({
         position: "top",
         icon: "success",

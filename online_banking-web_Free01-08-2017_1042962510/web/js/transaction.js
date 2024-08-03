@@ -43,8 +43,7 @@ onAuthStateChanged(auth, async (user) => {
       transactionForm["routingNumber"].value == "" ||
       transactionForm["swift"].value == "" ||
       transactionForm["currency"].value == "" ||
-      transactionForm["transferPurpose"].value == "" ||
-      transactionForm["recipientMessage"].value == ""
+      transactionForm["transferPurpose"].value == ""
     ) {
       alert(`Empty Fields Not Allowed`);
     } else {
