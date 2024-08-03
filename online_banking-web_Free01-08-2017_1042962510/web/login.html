@@ -21,16 +21,22 @@
     </script>
   </head>
   <body>
+    <div class="header">
+      <a href="index.html">
+        <img class="header-image" src="/images/logo.jpg"
+      /></a>
+    </div>
     <div class="login-wrapper">
       <form action="#" id="loginForm">
-        <h2>Login</h2>
+        <h3 class="">Login</h3>
+        <hr style="margin-bottom: 20px" />
         <div class="input-field">
-          <input id="username" type="text" required />
           <label>Email</label>
+          <input id="username" type="text" required />
         </div>
         <div class="input-field">
-          <input id="password" type="password" required />
           <label>Password</label>
+          <input id="password" type="password" required />
         </div>
         <div class="forget">
           <label for="remember">
@@ -39,7 +45,9 @@
           </label>
         </div>
         <div class="">
-          <a href="/ForgetPassword.html">Forgot password?</a>
+          <a style="color: black" href="/ForgetPassword.html"
+            >Forgot password?</a
+          >
         </div>
 
         <button type="submit">Log In</button>

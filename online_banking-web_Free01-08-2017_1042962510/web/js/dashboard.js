@@ -36,7 +36,8 @@ const db = getFirestore(app);
 const cardNumber = document.querySelector("#number");
 const cvv = document.querySelector("#cvv");
 const expiryDate = document.querySelector("#expiry");
-const balance = document.querySelector("#balance");
+const mainBalance = document.querySelector("#main-balance");
+const subBalance = document.querySelector("#sub-balance");
 const username = document.querySelector("#user-name");
 const fullName = document.querySelector("#full-name");
 const cardBtn = document.querySelector("#flipCardBtn");
@@ -57,6 +58,8 @@ onAuthStateChanged(auth, async (user) => {
 
   if (userDocSnap.exists()) {
     console.log("Document data:", userDocSnap.data());
+    mainBalance.innerHTML = userDocSnap.data().balance;
+    subBalance.innerHTML = userDocSnap.data().balance;
     cardNumber.innerHTML = userDocSnap.data().number;
     cvv.innerHTML = userDocSnap.data().cvv;
     expiryDate.innerHTML = `${userDocSnap.data().expiryMonth}/${

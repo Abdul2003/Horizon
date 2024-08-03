@@ -39,10 +39,14 @@ signupForm.addEventListener("submit", (e) => {
   const lastName = signupForm["last_name"].value;
   const iban = signupForm["iban"].value;
   const ssn = signupForm["ssn"].value;
-  const inputValidation = document.querySelector(".input-validation");
-  const confirmPasswordValidation = document.querySelector(
-    ".confirmPasswordValidation"
-  );
+  const maiden = signupForm["maiden"].value;
+  const address = signupForm["address"].value;
+  const country = signupForm["country"].value;
+  const city = signupForm["city"].value;
+  const phone = signupForm["phone"].value;
+  const accountType = signupForm["accountType"].value;
+  const accountNumber = signupForm["accountNumber"].value;
+
   if (password.length < 6) {
     Swal.fire({
       position: "top",
@@ -69,6 +73,14 @@ signupForm.addEventListener("submit", (e) => {
           lastName: lastName,
           iban: iban,
           ssn: ssn,
+          maiden_name: maiden,
+          address: address,
+          country: country,
+          city: city,
+          phone: phone,
+          accountType: accountType,
+          accountNumber: accountNumber,
+          balance: "0",
         }).then(function () {
           Swal.fire({
             position: "top",

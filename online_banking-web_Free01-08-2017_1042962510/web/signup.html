@@ -10,42 +10,103 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
+    <div class="header">
+      <a href="index.html">
+        <img class="header-image" src="/images/logo.jpg"
+      /></a>
+    </div>
     <div class="wrapper">
       <form action="#" id="signupForm">
-        <h2>Register</h2>
+        <div class="title-container">
+          <h3 class="title">Create Login</h3>
+          <hr />
+        </div>
         <div class="input-field">
-          <input id="first_name" type="text" required />
+          <label>Email</label>
+          <input id="email" type="text" required />
+        </div>
+        <div class="input-field">
+          <label>Password</label>
+          <input id="password" type="password" required />
+        </div>
+        <div class="input-field">
+          <label>Confirm Password</label>
+          <input id="confirmPassword" type="password" required />
+        </div>
+        <div class="title-container">
+          <h3 class="title">Personal Information</h3>
+          <hr />
+        </div>
+
+        <div class="input-field">
           <label>First Name</label>
+          <input id="first_name" type="text" required />
         </div>
         <div class="input-field">
-          <input id="last_name" type="text" required />
           <label>Last Name</label>
+          <input id="last_name" type="text" required />
         </div>
         <div class="input-field">
+          <label>Mother's Maiden Name</label>
+          <input id="maiden" type="text" required />
+        </div>
+        <div class="input-field">
+          <label>SSN</label>
+          <input id="ssn" type="text" required />
+        </div>
+        <div class="input-field">
+          <label for="file-upload" class="custom-file-upload">Passport</label>
           <input type="file" name="uploadfile" id="passport" />
         </div>
+
         <div class="input-field">
-          <input id="email" type="text" required />
-          <label>Email</label>
-        </div>
-        <div class="input-field">
-          <input id="ssn" type="text" required />
           <label>IBAN</label>
-        </div>
-        <div class="input-field">
           <input id="iban" type="text" required />
-          <label>SSN</label>
         </div>
-        <div class="input-field">
-          <input id="password" type="password" required />
-          <label>Password</label>
-        </div>
-
-        <div class="input-field">
-          <input id="confirmPassword" type="password" required />
-          <label>Confirm Password</label>
+        <div class="title-container">
+          <h3 class="title">Contact Information</h3>
+          <hr />
         </div>
 
+        <div class="input-field">
+          <label>Street Address</label>
+          <input id="address" type="text" required />
+        </div>
+        <div class="input-field">
+          <label>Country</label>
+          <input id="country" type="text" required />
+        </div>
+        <div class="input-field">
+          <label>City</label>
+          <input id="city" type="text" required />
+        </div>
+        <div class="input-field">
+          <label>Phone Number</label>
+          <input id="phone" type="text" required />
+        </div>
+        <div class="title-container">
+          <p class="title">
+            Select the account that matches the account number entered below
+          </p>
+        </div>
+        <hr />
+        <div class="input-field">
+          <label>Account Type</label>
+          <select class="form-select" id="accountType">
+            <option value="Checking">Checking</option>
+            <option value="Money Market">Money Market</option>
+            <option value="Certificate Of Deposit">
+              Certificate Of Deposit
+            </option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Installment Loan">Installment Loan</option>
+            <option value="Mortgage Loan">Mortgage Loan</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label>Account Number</label>
+          <input id="accountNumber" type="text" required />
+        </div>
         <button type="submit">Register</button>
 
         <div class="register">
