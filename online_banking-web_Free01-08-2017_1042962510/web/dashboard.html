@@ -280,11 +280,17 @@
         background-color: green;
         border: none;
         margin-top: 20px;
+        color: white;
+        text-decoration: none;
+        display: block;
       }
       #depositBtn {
         background-color: orange;
         border: none;
         margin-top: 20px;
+        color: white;
+        text-decoration: none;
+        display: block;
       }
 
       #transferBtn:hover {
@@ -412,7 +418,7 @@
           <h1 class="mt-4"></h1>
           <ol class="breadcrumb mb-4 justify-content-center">
             <li class="breadcrumb-item active">
-              <b id="user-name">Hi, NUELORG</b>
+              <b id="user-name">Hi, USER</b>
             </li>
           </ol>
           <!-- <div class="imageContainer">
@@ -482,24 +488,22 @@
               </div>
               <div class="row">
                 <div class="col-6">
-                  <button id="transferBtn" class="btn btn-primary w-100">
-                    <a
-                      style="color: white; text-decoration: none"
-                      href="/transaction.html"
-                      target="_blank"
-                      >WIRE TRANSFER</a
-                    >
-                  </button>
+                  <a
+                    class="btn btn-primary"
+                    id="transferBtn"
+                    href="/transfer.html"
+                    target="_blank"
+                    >WIRE TRANSFER</a
+                  >
                 </div>
                 <div class="col-6">
-                  <button id="depositBtn" class="btn btn-primary w-100">
-                    <a
-                      style="color: white; text-decoration: none"
-                      href="/deposit.html"
-                      target="_blank"
-                      >DIRECT DEPOSIT</a
-                    >
-                  </button>
+                  <a
+                    class="btn btn-primary"
+                    id="depositBtn"
+                    href="/deposit.html"
+                    target="_blank"
+                    >DIRECT DEPOSIT</a
+                  >
                 </div>
                 <div class="col-sm-6"></div>
               </div>

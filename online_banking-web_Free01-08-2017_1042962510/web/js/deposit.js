@@ -65,7 +65,7 @@ onAuthStateChanged(auth, async (user) => {
           status: "Pending",
           accountType: accountType,
           frequency: frequency,
-          transferType: "Fixed Deposit",
+          transferType: "Direct Deposit",
         }),
       });
       // }
