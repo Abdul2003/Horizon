@@ -73,7 +73,7 @@
       }
 
       .card-body {
-        padding: 20px;
+        padding: 15px;
       }
 
       .card-header {
@@ -115,7 +115,7 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 40px;
       }
 
       .last-transactions h2 {
@@ -135,13 +135,25 @@
         font-size: 12px;
       }
 
+      /* .image {
+        width: 100%;
+        height: 300px;
+      } */
+      #profile-card {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        /* position: relative;
+        bottom: 100px; */
+      }
       /* CARD */
       .flip-card {
         background-color: transparent;
-        max-width: 450px;
-        height: 200px;
+        width: 500px;
         margin-bottom: 20px;
-        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+        perspective: 1000px;
+        /* Remove this if you don't want the 3D effect */
       }
 
       /* This container is needed to position the front and back side */
@@ -167,35 +179,142 @@
         height: 100%;
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px 1px rgb(82, 82, 82);
       }
 
       /* Style the front side (fallback if image is missing) */
       .flip-card-front {
         background-color: dodgerblue;
+        color: rgb(71, 71, 71);
+        background-color: rgb(232, 231, 231);
+      }
+      .flip-card-back {
+        background-color: dodgerblue;
         color: white;
+        background-color: rgb(38, 38, 38);
+        transform: rotateY(180deg);
       }
 
       /* Style the back side */
-      .flip-card-back {
-        background-color: purple;
-        color: white;
-        transform: rotateY(180deg);
+
+      .header {
+        width: 100%;
       }
-      .atmBtn {
-        background-color: #a42e9d; /* Green */
-        border: none;
-        color: white;
-        padding: 15px;
-        margin-left: 6px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
+      .header img {
+        width: 100%;
+        max-height: 300px;
+        height: auto;
+      }
+      .balance {
+        font-size: 30px;
+        font-weight: bold;
+        color: black;
+      }
+      .dollar {
+        font-size: 20px;
+      }
+      #balance {
+        padding: 2px;
+      }
+      .available-balance {
         font-size: 16px;
-        transition: 0.2s;
+        margin-bottom: 0;
+        color: rgb(97, 97, 97);
       }
-      .atmBtn:hover {
-        transition: 0.2s;
-        background-color: #883782; /* Green */
+      .small-dollar {
+        font-size: 14px;
+      }
+      .small-balance {
+        font-size: 18px;
+        color: black;
+      }
+      .current-balance {
+        font-size: 15px;
+        color: rgb(97, 97, 97);
+      }
+      #piggy-container {
+        position: relative;
+        bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .piggy-bank {
+        max-width: 200px;
+        min-width: 200px;
+        height: 200px;
+      }
+      #flipCardBtn:hover {
+        background-color: rgb(68, 68, 68);
+      }
+      #flipCardBtn2:hover {
+        background-color: rgb(224, 211, 211);
+      }
+      #flipCardBtn,
+      #atmBtn {
+        background-color: #212529;
+        border: none;
+      }
+
+      #flipCardBtn2 {
+        background-color: white;
+        color: black;
+        border: none;
+      }
+      #full-name,
+      #user-name {
+        text-transform: uppercase;
+      }
+      #user-name {
+        color: rgb(0, 0, 0);
+        font-family: sans-serif;
+        font-weight: 300;
+      }
+      #transferBtn {
+        background-color: green;
+        border: none;
+      }
+      #depositBtn {
+        background-color: orange;
+        border: none;
+      }
+
+      #transferBtn:hover {
+        background-color: rgb(20, 91, 20);
+      }
+      #depositBtn:hover {
+        background-color: rgb(198, 137, 24);
+      }
+
+      @media only screen and (max-width: 481px) {
+        .piggy-bank {
+          max-width: 140px;
+          min-width: 140px;
+          height: 140px;
+          width: auto;
+          height: auto;
+        }
+        .dollar {
+          font-size: 14px;
+        }
+        .balance {
+          font-size: 20px;
+        }
+        .small-balance {
+          font-size: 15px;
+        }
+        .available-balance {
+          font-size: 14px;
+        }
+        .current-balance {
+          font-size: 12px;
+        }
+        #flipCardBtn,
+        #atmBtn,
+        #flipCardBtn2 {
+          font-size: 12px;
+        }
       }
     </style>
   </head>
@@ -266,54 +385,67 @@
         </ul>
       </div>
     </nav>
-
+    <!-- <div class="header">
+      <img src="/images/dashboardLogo.jpg" />
+    </div> -->
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4"></h1>
-          <ol class="breadcrumb mb-4">
+          <ol class="breadcrumb mb-4 justify-content-center">
             <li class="breadcrumb-item active">
               <b id="user-name">Hi, NUELORG</b>
             </li>
           </ol>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card-body">Available Balance</div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div
-                          id="balance"
-                          class="card-body"
-                          style="font-size: 24px"
+          <!-- <div class="imageContainer">
+            <img class="image" src="./images/dashboardLogo.jpg" />
+          </div> -->
+          <div id="profile-card" class="container-fluid">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="card-body">PERSONAL SAVINGS</div>
+                  <div class="row p-2">
+                    <div class="col-6">
+                      <div
+                        id="balance"
+                        class="card-body"
+                        style="font-size: 24px"
+                      >
+                        <span class="balance">
+                          <sup class="dollar">$</sup>600,000,000</span
                         >
-                          $600,000,000
-                        </div>
+                        <p class="available-balance">AVAILABLE BALANCE</p>
+                        <span class="small-balance">
+                          <sup class="small-dollar">$</sup>600,000,000</span
+                        >
+                        <p class="current-balance">CURRENT BALANCE</p>
+                        <button id="flipCardBtn" class="btn btn-primary">
+                          SHOW ATM
+                        </button>
                       </div>
-                      <div class="col-12">
-                        <input
-                          type="button"
-                          class="atmBtn"
-                          value="Request ATM"
-                        />
-                      </div>
+                    </div>
+                    <div id="piggy-container" class="col-6">
+                      <img class="piggy-bank" src="./images/piggy-bank.png" />
                     </div>
                   </div>
-                  <div class="flip-card-back">
-                    <div id="full-name" class="card-body">
-                      Available Balance
-                    </div>
-                    <!-- <div id="balance" class="card-body" style="font-size: 24px;">$600,000,000</div> -->
-                    <div class="row p-3">
-                      <div class="col-12">
-                        <div id="number" style="font-size: 24px">
-                          1234567891011
+                </div>
+                <div class="flip-card-back">
+                  <div class="row p-3">
+                    <div class="col-6">
+                      <div class="col-12 w-100 mt-5">
+                        <div>
+                          <img src="./images/chip.png" style="width: 50px" />
+                        </div>
+                        <div
+                          id="number"
+                          style="font-size: 24px; letter-spacing: 10px"
+                        >
+                          1234567891011123
                         </div>
                       </div>
-                      <div class="row d-flex">
-                        <div class="col-2">
+                      <div class="row">
+                        <div class="col-2 w-50">
                           <div>CVV</div>
                           <div id="cvv">222</div>
                         </div>
@@ -321,39 +453,42 @@
                           <div>EXP</div>
                           <div id="expiry">01/25</div>
                         </div>
+
+                        <p id="full-name" class="mt-3">JOHN DOE</p>
                       </div>
+                    </div>
+                    <div
+                      class="col-6 d-flex align-items-end justify-content-end"
+                    >
+                      <button id="flipCardBtn2" class="btn btn-primary">
+                        HIDE CARD
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row w-50">
-              <div class="col-sm-6">
-                <button id="transferBtn" class="btn btn-primary">
-                  <a
-                    style="color: white; text-decoration: none"
-                    href="/transaction.html"
-                    target="_blank"
-                    >Transfer</a
-                  >
-                </button>
-              </div>
-              <div class="col-sm-6">
-                <button id="flipCardBtn" class="btn btn-primary">
-                  Flip Card
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-6">
-              <div class="card mb-4">
-                <div class="card-header">
-                  <i class="fas fa-chart-area me-1"></i>Chart Area
+              <div class="row">
+                <div class="col-6">
+                  <button id="transferBtn" class="btn btn-primary w-100">
+                    <a
+                      style="color: white; text-decoration: none"
+                      href="/transaction.html"
+                      target="_blank"
+                      >WIRE TRANSFER</a
+                    >
+                  </button>
                 </div>
-                <div class="card-body">
-                  <!-- Chart content here -->
+                <div class="col-6">
+                  <button id="depositBtn" class="btn btn-primary w-100">
+                    <a
+                      style="color: white; text-decoration: none"
+                      href="/deposit.html"
+                      target="_blank"
+                      >DIRECT DEPOSIT</a
+                    >
+                  </button>
                 </div>
+                <div class="col-sm-6"></div>
               </div>
             </div>
           </div>
@@ -361,42 +496,6 @@
           <!-- Last Transactions Section -->
           <div class="last-transactions">
             <h2>Last Transactions</h2>
-            <!-- <div class="transaction-item">
-              <span>$10,00</span>
-              <span class="text-muted">to John Doe</span>
-              <span class="text-muted">- 2 hours ago</span>
-              <span class="text-muted">27/08/2024</span>
-            </div>
-            <div class="transaction-item">
-              <span>$50,000</span>
-              <span class="text-muted">to Jane Smith</span>
-              <span class="text-muted">- 4 hours ago</span>
-              <span class="text-muted">27/08/2024</span>
-            </div>
-            <div class="transaction-item">
-              <span>$2,900</span>
-              <span class="text-muted">to Emily Johnson</span>
-              <span class="text-muted">- 1 day ago</span>
-              <span class="text-muted">26/08/2024</span>
-            </div>
-            <div class="transaction-item">
-              <span>$38,650</span>
-              <span class="text-muted">to Blings </span>
-              <span class="text-muted">- 4 day ago</span>
-              <span class="text-muted">23/08/2024</span>
-            </div>
-            <div class="transaction-item">
-              <span>$20,000</span>
-              <span class="text-muted">to James</span>
-              <span class="text-muted">- 7 day ago</span>
-              <span class="text-muted">20/08/2024</span>
-            </div>
-            <div class="transaction-item">
-              <span>$106,800</span>
-              <span class="text-muted">to Ola phyz</span>
-              <span class="text-muted">- 2 weeks ago</span>
-              <span class="text-muted">04/08/2024</span>
-            </div> -->
           </div>
         </div>
       </main>
@@ -407,7 +506,7 @@
             <button class="btn btn-dark">Message The Support Team</button>
           </a>
           <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Republic Central Bank</div>
+            <div class="text-muted">Copyright &copy; Horizon Bank</div>
             <div>
               <a href="#">Privacy Policy</a>
               &middot;

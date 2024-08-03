@@ -40,25 +40,13 @@ const balance = document.querySelector("#balance");
 const username = document.querySelector("#user-name");
 const fullName = document.querySelector("#full-name");
 const cardBtn = document.querySelector("#flipCardBtn");
+const cardBtn2 = document.querySelector("#flipCardBtn2");
 const card = document.querySelector(".flip-card-inner");
 
 //flip card
-var bool = true;
-cardBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  console.log(bool);
-  if (bool == true) {
-    card.style.transform = "rotateY(180deg)";
-    bool = false;
-  } else {
-    card.style.transform = "none";
-    bool = true;
-  }
-});
 
 //GET USER INFO
-const atmBtn = document.querySelector(".atmBtn");
+
 onAuthStateChanged(auth, async (user) => {
   const userDocRef = doc(db, "Users", user.email);
   const userDocSnap = await getDoc(userDocRef);
@@ -78,11 +66,41 @@ onAuthStateChanged(auth, async (user) => {
       `Hi, ` + userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
     fullName.innerHTML =
       userDocSnap.data().firstName + " " + userDocSnap.data().lastName;
+    console.log(userDocSnap.data().number);
     if (userDocSnap.data().number == undefined) {
-      cardBtn.style.display = "none";
+      cardBtn.id = "atmBtn";
+      cardBtn.innerHTML = "REQUEST ATM";
+      console.log("should add id");
     }
     if (userDocSnap.data().number != undefined) {
-      atmBtn.style.display = "none";
+      cardBtn.id = "flipCardBtn";
+      cardBtn.innerHTML = "SHOW ATM";
+      var bool = true;
+      cardBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log(bool);
+
+        if (bool == true) {
+          card.style.transform = "rotateY(180deg)";
+          bool = false;
+        } else {
+          card.style.transform = "none";
+          bool = true;
+        }
+      });
+      cardBtn2.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log(bool);
+        if (bool == true) {
+          card.style.transform = "rotateY(180deg)";
+          bool = false;
+        } else {
+          card.style.transform = "none";
+          bool = true;
+        }
+      });
     }
   } else {
     // docSnap.data() will be undefined in this case
@@ -118,6 +136,7 @@ onAuthStateChanged(auth, async (user) => {
       parentDiv.appendChild(transactionItem);
     });
   }
+  const atmBtn = document.querySelector("#atmBtn");
   atmBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const db = getFirestore(app);

@@ -38,13 +38,9 @@ onAuthStateChanged(auth, async (user) => {
       transactionForm["beneficiaryBank"].value == "" ||
       transactionForm["amount"].value == "" ||
       transactionForm["beneficiaryName"].value == "" ||
-      transactionForm["recipientAddress"].value == "" ||
-      transactionForm["bankAddress"].value == "" ||
-      transactionForm["routingNumber"].value == "" ||
-      transactionForm["swift"].value == "" ||
-      transactionForm["currency"].value == "" ||
-      transactionForm["transferPurpose"].value == "" ||
-      transactionForm["recipientMessage"].value == ""
+      transactionForm["accountType"].value == "" ||
+      transactionForm["frequency"].value == "" ||
+      transactionForm["date"].value == ""
     ) {
       alert(`Empty Fields Not Allowed`);
     } else {
@@ -53,31 +49,23 @@ onAuthStateChanged(auth, async (user) => {
       const name = transactionForm["beneficiaryName"].value;
       const bank = transactionForm["beneficiaryBank"].value;
       const amount = transactionForm["amount"].value;
+      const date = transactionForm["date"].value;
 
-      const recipientAddress = transactionForm["recipientAddress"].value;
-      const bankAddress = transactionForm["bankAddress"].value;
-      const routingNumber = transactionForm["routingNumber"].value;
-      const swift = transactionForm["swift"].value;
-      const currency = transactionForm["currency"].value;
-      const transferPurpose = transactionForm["transferPurpose"].value;
-      const recipientMessage = transactionForm["recipientMessage"].value;
+      const accountType = transactionForm["accountType"].value;
+      const frequency = transactionForm["frequency"].value;
+
       // if (docSnap.exists()) {
       updateDoc(docRef, {
         Transaction: arrayUnion({
-          date: getDate.toLocaleString(),
+          date: date,
           account: account,
           name: name,
           bank: bank,
           amount: amount,
           status: "Pending",
-          recipientAddress: recipientAddress,
-          bankAddress: bankAddress,
-          routingNumber: routingNumber,
-          swift: swift,
-          currency: currency,
-          transferPurpose: transferPurpose,
-          recipientMessage: recipientMessage,
-          transferType: "Wire Transfer",
+          accountType: accountType,
+          frequency: frequency,
+          transferType: "Fixed Deposit",
         }),
       });
       // }
