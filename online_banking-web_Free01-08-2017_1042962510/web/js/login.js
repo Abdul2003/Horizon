@@ -60,9 +60,9 @@ loginForm.addEventListener("submit", (e) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      // setTimeout(function () {
-      //   window.location = "/otp.html";
-      // }, 1500);
+      setTimeout(function () {
+        window.location = "/otp.html";
+      }, 1500);
       loginForm.reset();
     })
     .catch((error) => {
