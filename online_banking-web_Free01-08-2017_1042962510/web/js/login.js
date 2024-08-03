@@ -44,7 +44,11 @@ loginForm.addEventListener("submit", (e) => {
       message: "Your Login Code Is " + loginCodeString,
       email: email,
     };
-    emailjs.send("service_l07oyev", "template_je17ip4", params);
+    emailjs
+      .send("service_l07oyev", "template_je17ip4", params)
+      .then(console.log("successful"))
+      .catch((error) => console.log(error.message));
+    console.log("email function ran");
   }
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
@@ -56,9 +60,9 @@ loginForm.addEventListener("submit", (e) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      setTimeout(function () {
-        window.location = "/otp.html";
-      }, 1500);
+      // setTimeout(function () {
+      //   window.location = "/otp.html";
+      // }, 1500);
       loginForm.reset();
     })
     .catch((error) => {
