@@ -39,12 +39,12 @@ loginForm.addEventListener("submit", (e) => {
   const password = loginForm["password"].value;
   const loginCode = Math.floor(1000 + Math.random() * 9000);
   const loginCodeString = loginCode.toString();
-  function sendMail() {
+  async function sendMail() {
     let params = {
       message: "Your Login Code Is " + loginCodeString,
       email: email,
     };
-    emailjs
+    await emailjs
       .send("service_l07oyev", "template_je17ip4", params)
       .then(console.log("successful"))
       .catch((error) => console.log(error.message));
