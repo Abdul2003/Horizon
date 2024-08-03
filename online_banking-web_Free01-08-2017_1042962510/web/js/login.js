@@ -45,7 +45,7 @@ loginForm.addEventListener("submit", (e) => {
       email: email,
     };
     await emailjs
-      .send("service_l07oyev", "template_je17ip4", params)
+      .send("service_izeeins", "template_ejsb7we", params)
       .then(console.log("successful"))
       .catch((error) => console.log(error.message));
     console.log("email function ran");
