@@ -37,11 +37,13 @@ signupForm.addEventListener("submit", (e) => {
   const confirmPassword = signupForm["confirmPassword"].value;
   const firstName = signupForm["first_name"].value;
   const lastName = signupForm["last_name"].value;
+  const dob = signupForm["dob"].value;
   const iban = signupForm["iban"].value;
   const ssn = signupForm["ssn"].value;
   const maiden = signupForm["maiden"].value;
   const address = signupForm["address"].value;
   const country = signupForm["country"].value;
+  const zip = signupForm["zip"].value;
   const city = signupForm["city"].value;
   const phone = signupForm["phone"].value;
   const accountType = signupForm["accountType"].value;
@@ -71,12 +73,14 @@ signupForm.addEventListener("submit", (e) => {
         setDoc(doc(db, "Users", email), {
           firstName: firstName,
           lastName: lastName,
+          dob: dob,
           iban: iban,
           ssn: ssn,
           maiden_name: maiden,
           address: address,
           country: country,
           city: city,
+          zip: zip,
           phone: phone,
           accountType: accountType,
           accountNumber: accountNumber,
