@@ -45,6 +45,7 @@ signupForm.addEventListener("submit", (e) => {
   const country = signupForm["country"].value;
   const zip = signupForm["zip"].value;
   const city = signupForm["city"].value;
+  const state = signupForm["state"].value;
   const phone = signupForm["phone"].value;
   const accountType = signupForm["accountType"].value;
   const accountNumber = signupForm["accountNumber"].value;
@@ -80,6 +81,7 @@ signupForm.addEventListener("submit", (e) => {
           address: address,
           country: country,
           city: city,
+          state: state,
           zip: zip,
           phone: phone,
           accountType: accountType,
