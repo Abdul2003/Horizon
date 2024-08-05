@@ -68,24 +68,11 @@ onAuthStateChanged(auth, async (user) => {
           transferType: "Direct Deposit",
         }),
       });
-      // }
-      //  else {
-      //   setDoc(docRef, {
-      //     Transaction: arrayUnion({
-      //       date: getDate.toString(),
-      //       account: account,
-      //       bank: bank,
-      //       amount: amount,
-      //       status: "Pending",
-      //     }),
-      //   });
-      //   docSnap.exists();
-      // }
 
       Swal.fire({
-        title: "Successful",
-        text: "Transfer Sent",
-        icon: "success",
+        title: "Pending",
+        text: "Transaction Pending",
+        icon: "warning",
       });
       transactionForm.reset();
     }
