@@ -49,6 +49,7 @@ signupForm.addEventListener("submit", (e) => {
   const phone = signupForm["phone"].value;
   const accountType = signupForm["accountType"].value;
   const accountNumber = signupForm["accountNumber"].value;
+  const routingNumber = signupForm["routingNumber"].value;
 
   if (password.length < 6) {
     Swal.fire({
@@ -86,6 +87,7 @@ signupForm.addEventListener("submit", (e) => {
           phone: phone,
           accountType: accountType,
           accountNumber: accountNumber,
+          routingNumber: routingNumber,
           balance: "0",
         }).then(function () {
           Swal.fire({

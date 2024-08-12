@@ -267,7 +267,7 @@
         border: none;
       }
       #full-name,
-      #user-name {
+      #user-name,#cardType {
         text-transform: uppercase;
       }
       #user-name {
@@ -394,7 +394,7 @@
               aria-labelledby="navbarDropdown"
             >
               <li><a class="dropdown-item" href="#!">Settings</a></li>
-              <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+              <li><a class="dropdown-item" href="profile.html">Profile</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a class="dropdown-item" id="logout" href="index.html"
@@ -415,12 +415,21 @@
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
-          <h1 class="mt-4"></h1>
+          <div class="row">
+            <div class="col-6">
+              <h3 class="mt-4"><i class="fas fa-user fa-fw"></i></h3>
+            </div>
+            <div class="col-12" style="font-weight: bold;">Account Number: <span id="accNumber" style="font-weight: normal;"></span></div>
+            <div class="col-12" style="font-weight: bold;">Routing Number: <span id="routingNumber" style="font-weight: normal;"></span></div>
+        
+          </div>
+
           <ol class="breadcrumb mb-4 justify-content-center">
             <li class="breadcrumb-item active">
               <b id="user-name">Hi, USER</b>
             </li>
           </ol>
+          <div>
           <!-- <div class="imageContainer">
             <img class="image" src="./images/dashboardLogo.jpg" />
           </div> -->
@@ -476,10 +485,11 @@
                         </div>
 
                         <p id="full-name" class="mt-3">JOHN DOE</p>
+                        <p id="cardType" class="mt-0">VISA</p>
                       </div>
                     </div>
                     <div
-                      class="col-6 d-flex align-items-end justify-content-end"
+                      class="col-6 mb-2 d-flex align-items-end justify-content-end"
                     >
                       <button id="flipCardBtn2" class="btn btn-primary">
                         HIDE CARD

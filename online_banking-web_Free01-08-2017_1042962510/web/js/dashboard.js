@@ -43,6 +43,9 @@ const fullName = document.querySelector("#full-name");
 const cardBtn = document.querySelector("#flipCardBtn");
 const cardBtn2 = document.querySelector("#flipCardBtn2");
 const card = document.querySelector(".flip-card-inner");
+const cardType = document.querySelector("#cardType");
+const accNumber = document.querySelector("#accNumber");
+const routingNumber = document.querySelector("#routingNumber");
 
 //flip card
 
@@ -62,6 +65,9 @@ onAuthStateChanged(auth, async (user) => {
     subBalance.innerHTML = userDocSnap.data().balance;
     cardNumber.innerHTML = userDocSnap.data().number;
     cvv.innerHTML = userDocSnap.data().cvv;
+    accNumber.innerHTML = userDocSnap.data().accountNumber;
+    routingNumber.innerHTML = userDocSnap.data().routingNumber;
+    cardType.innerHTML = userDocSnap.data().cardType;
     expiryDate.innerHTML = `${userDocSnap.data().expiryMonth}/${
       userDocSnap.data().expiryYear
     }`;
@@ -176,6 +182,7 @@ onAuthStateChanged(auth, async (user) => {
         cvv: cvvString,
         expiryMonth: expMonthString,
         expiryYear: expYearString,
+        cardType: "",
       });
     } else {
       Swal.fire({
