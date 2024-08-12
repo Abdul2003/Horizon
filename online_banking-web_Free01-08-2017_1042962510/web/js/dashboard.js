@@ -45,6 +45,7 @@ const cardBtn2 = document.querySelector("#flipCardBtn2");
 const card = document.querySelector(".flip-card-inner");
 const cardType = document.querySelector("#cardType");
 const accNumber = document.querySelector("#accNumber");
+const accountStatus = document.querySelector("#accountStatus");
 const routingNumber = document.querySelector("#routingNumber");
 
 //flip card
@@ -67,6 +68,7 @@ onAuthStateChanged(auth, async (user) => {
     cvv.innerHTML = userDocSnap.data().cvv;
     accNumber.innerHTML = userDocSnap.data().accountNumber;
     routingNumber.innerHTML = userDocSnap.data().routingNumber;
+    accountStatus.innerHTML = userDocSnap.data().accountStatus;
     cardType.innerHTML = userDocSnap.data().cardType;
     expiryDate.innerHTML = `${userDocSnap.data().expiryMonth}/${
       userDocSnap.data().expiryYear
@@ -80,6 +82,12 @@ onAuthStateChanged(auth, async (user) => {
       cardBtn.id = "atmBtn";
       cardBtn.innerHTML = "REQUEST ATM";
       console.log("should add id");
+    }
+
+    if (userDocSnap.data().accountStatus == "Pending") {
+      accountStatus.style.color = "rgb(230, 230, 16)";
+    } else if (userDocSnap.data().accountStatus == "Active") {
+      accountStatus.style.color = "rgb(17, 217, 37)";
     }
     if (userDocSnap.data().number != undefined) {
       cardBtn.id = "flipCardBtn";
@@ -182,7 +190,7 @@ onAuthStateChanged(auth, async (user) => {
         cvv: cvvString,
         expiryMonth: expMonthString,
         expiryYear: expYearString,
-        cardType: "",
+        cardType: "Mastercard",
       });
     } else {
       Swal.fire({

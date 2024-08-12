@@ -88,6 +88,7 @@ signupForm.addEventListener("submit", (e) => {
           accountType: accountType,
           accountNumber: accountNumber,
           routingNumber: routingNumber,
+          accountStatus: "Pending",
           balance: "0",
         }).then(function () {
           Swal.fire({
