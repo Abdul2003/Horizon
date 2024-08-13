@@ -84,9 +84,9 @@ onAuthStateChanged(auth, async (user) => {
       console.log("should add id");
     }
 
-    if (userDocSnap.data().accountStatus == "Pending") {
+    if (userDocSnap.data().accountStatus == "ON HOLD") {
       accountStatus.style.color = "rgb(230, 230, 16)";
-    } else if (userDocSnap.data().accountStatus == "Active") {
+    } else if (userDocSnap.data().accountStatus == "ACTIVE") {
       accountStatus.style.color = "rgb(17, 217, 37)";
     }
     if (userDocSnap.data().number != undefined) {
