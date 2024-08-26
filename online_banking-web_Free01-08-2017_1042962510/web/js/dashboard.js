@@ -125,34 +125,39 @@ onAuthStateChanged(auth, async (user) => {
   }
   if (transactionDocSnap.exists()) {
     if (transactionDocSnap.data().Transaction != undefined) {
-      transactionDocSnap.data().Transaction.map((item) => {
-        const parentDiv = document.querySelector(".last-transactions");
-        const transactionItem = document.createElement("div");
-        transactionItem.classList.add("transaction-item");
-        const amount = document.createElement("span");
-        amount.innerHTML = "$" + item.amount;
-        const beneficiary = document.createElement("span");
-        beneficiary.classList.add("text-muted");
-        beneficiary.innerHTML = "to " + item.name;
-        const date = document.createElement("span");
-        date.classList.add("text-muted");
-        date.innerHTML = item.date;
-        const status = document.createElement("span");
-        status.innerHTML = item.status;
+      transactionDocSnap
+        .data()
+        .Transaction.reverse()
+        .map((item) => {
+          console.log(transactionDocSnap.data().Transaction);
 
-        if (item.status == "Pending") {
-          status.style.color = "rgb(230, 230, 16)";
-        } else if (item.status == "Failed") {
-          status.style.color = "rgb(217, 34, 17)";
-        } else if (item.status == "Successful") {
-          status.style.color = "rgb(17, 217, 37)";
-        }
-        transactionItem.appendChild(amount);
-        transactionItem.appendChild(beneficiary);
-        transactionItem.appendChild(date);
-        transactionItem.appendChild(status);
-        parentDiv.appendChild(transactionItem);
-      });
+          const parentDiv = document.querySelector(".last-transactions");
+          const transactionItem = document.createElement("div");
+          transactionItem.classList.add("transaction-item");
+          const amount = document.createElement("span");
+          amount.innerHTML = "$" + item.amount;
+          const beneficiary = document.createElement("span");
+          beneficiary.classList.add("text-muted");
+          beneficiary.innerHTML = "to " + item.name;
+          const date = document.createElement("span");
+          date.classList.add("text-muted");
+          date.innerHTML = item.date;
+          const status = document.createElement("span");
+          status.innerHTML = item.status;
+
+          if (item.status == "Pending") {
+            status.style.color = "rgb(230, 230, 16)";
+          } else if (item.status == "Failed") {
+            status.style.color = "rgb(217, 34, 17)";
+          } else if (item.status == "Successful") {
+            status.style.color = "rgb(17, 217, 37)";
+          }
+          transactionItem.appendChild(amount);
+          transactionItem.appendChild(beneficiary);
+          transactionItem.appendChild(date);
+          transactionItem.appendChild(status);
+          parentDiv.appendChild(transactionItem);
+        });
     } else {
       console.log("transaction document data doesnt exist");
     }
