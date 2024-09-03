@@ -45,9 +45,9 @@ loginForm.addEventListener("submit", (e) => {
       email: email,
     };
     emailjs
-      .send("service_izeeins", "template_ejsb7we", params)
+      .send("service_3ybsrw7", "template_u18ot1b", params)
       .then(console.log("successful"))
-      .catch((error) => console.log(error.message));
+      .catch((error) => console.log(error));
     console.log("email function ran");
   }
   signInWithEmailAndPassword(auth, email, password)
