@@ -30,29 +30,33 @@ const app = initializeApp(firebaseConfig);
 //auth and firestore references
 const auth = getAuth();
 const db = getFirestore(app);
+var hi;
 
 //user login
 const loginForm = document.querySelector("#loginForm");
+
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = loginForm["username"].value;
   const password = loginForm["password"].value;
-  const loginCode = Math.floor(1000 + Math.random() * 9000);
-  const loginCodeString = loginCode.toString();
-  function sendMail() {
-    let params = {
-      message: "Your Login Code Is " + loginCodeString,
-      email: email,
-    };
-    emailjs
-      .send("service_3ybsrw7", "template_u18ot1b", params)
-      .then(console.log("successful"))
-      .catch((error) => console.log(error));
-    console.log("email function ran");
-  }
+  // const loginCode = Math.floor(1000 + Math.random() * 9000);
+  // const loginCodeString = loginCode.toString();
+
+  // function sendMail() {
+  //   let params = {
+  //     message: "Your Login Code Is " + loginCodeString,
+  //     email: email,
+  //   };
+  //   emailjs
+  //     .send("service_ouaytu9", "template_u18ot1b", params)
+  //     .then(console.log("successful"))
+  //     .catch((error) => console.log(error));
+  //   console.log("email function ran");
+  // }
+
   signInWithEmailAndPassword(auth, email, password)
     .then(async () => {
-      await sendMail();
+      // await sendMail();
       Swal.fire({
         position: "top",
         icon: "success",
