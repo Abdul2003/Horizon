@@ -46,6 +46,7 @@ const card = document.querySelector(".flip-card-inner");
 const cardType = document.querySelector("#cardType");
 const accNumber = document.querySelector("#accNumber");
 const accountStatus = document.querySelector("#accountStatus");
+const atmStatus = document.querySelector("#atmStatus");
 const routingNumber = document.querySelector("#routingNumber");
 
 //flip card
@@ -69,6 +70,7 @@ onAuthStateChanged(auth, async (user) => {
     accNumber.innerHTML = userDocSnap.data().accountNumber;
     routingNumber.innerHTML = userDocSnap.data().routingNumber;
     accountStatus.innerHTML = userDocSnap.data().accountStatus;
+    atmStatus.innerHTML = userDocSnap.data().physicalAtmStatus;
     cardType.innerHTML = userDocSnap.data().cardType;
     expiryDate.innerHTML = `${userDocSnap.data().expiryMonth}/${
       userDocSnap.data().expiryYear
@@ -88,6 +90,11 @@ onAuthStateChanged(auth, async (user) => {
       accountStatus.style.color = "rgb(230, 230, 16)";
     } else if (userDocSnap.data().accountStatus == "ACTIVE") {
       accountStatus.style.color = "rgb(17, 217, 37)";
+    }
+    if (userDocSnap.data().physicalAtmStatus == "Pending") {
+      atmStatus.style.color = "rgb(230, 230, 16)";
+    } else if (userDocSnap.data().physicalAtmStatus == "Active") {
+      atmStatus.style.color = "rgb(17, 217, 37)";
     }
     if (userDocSnap.data().number != undefined) {
       cardBtn.id = "flipCardBtn";
