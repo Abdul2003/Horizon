@@ -292,13 +292,16 @@
         text-decoration: none;
         display: block;
       }
-      #requestBtn {
+      #requestBtn,#activateBtn {
     
         border: none;
         margin-top: 20px;
         color: white;
         text-decoration: none;
         display: block;
+      }
+      #activateBtn{
+        background-color: purple;
       }
       
 
@@ -308,7 +311,10 @@
       #depositBtn:hover {
         background-color: rgb(198, 137, 24);
       }
-
+      @media only screen and (min-width: 992px) {}
+.link-button-container{
+  width: 25%;
+}
       @media only screen and (max-width: 481px) {
         .piggy-bank {
           max-width: 140px;
@@ -512,7 +518,7 @@
             </div>
           </div>
               <div class="row justify-content-center d-flex">
-                <div class="col-6 w-25">
+                <div class="col-6 link-button-container">
                   <a
                     class="btn btn-primary"
                     id="transferBtn"
@@ -521,7 +527,7 @@
                     >WIRE TRANSFER</a
                   >
                 </div>
-                <div class="col-6 w-25">
+                <div class="col-6 link-button-container">
                   <a
                     class="btn btn-primary"
                     id="depositBtn"
@@ -533,13 +539,22 @@
               
               </div>
               <div class="row justify-content-center">
-                <div class="col-6 w-25">
+                <div class="col-6 link-button-container">
                   <a
                     class="btn btn-primary"
                     id="requestBtn"
                     href="/cardRequest.html"
                     target="_blank"
                     >REQUEST PHYSICAL CARD</a
+                  >
+                </div>
+                <div class="col-6 link-button-container">
+                  <a
+                    class="btn btn-primary"
+                    id="activateBtn"
+                    href="/cardActivate.html"
+                    target="_blank"
+                    >ACTIVATE PHYSICAL CARD</a
                   >
                 </div>
               </div>
