@@ -89,6 +89,7 @@ signupForm.addEventListener("submit", (e) => {
           accountNumber: accountNumber,
           routingNumber: routingNumber,
           accountStatus: "Pending",
+          physicalAtmStatus: "Not Requested",
           balance: "0",
         }).then(function () {
           Swal.fire({
